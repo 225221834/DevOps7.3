@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+//require('dotenv').config();
+const productRoutes = require('../routes/products');
+const authRoutes = require('../routes/auth');
 
 const contactController = require('../controllers/contact'); //
 const searchRoutes = require('../controllers/search');
@@ -19,6 +22,8 @@ app.get('/contact', contactController); // Use controller directly for simple ro
 app.use('/api/search', searchRoutes);
 app.use('/api/products', productsRoutes);// New products route
 app.use('/api/contact', contactRoutes);
+app.use('/api', productRoutes);// Product routes
+app.use('/api/auth', authRoutes); // Auth routes 
 
 module.exports = app;
 
