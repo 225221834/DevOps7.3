@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Seller Login - MystiKraft</title>
+  <title>Seller Registration - MystiKraft</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header class="center-align section">
-    <h1>Seller Login</h1>
+    <h1>Seller Registration</h1>
   </header>
 
   <nav class="white">
@@ -31,19 +31,19 @@
   </nav>
 
   <main class="container section">
-    <form id="login-form">
+    <form id="register-form">
       <div class="row">
         <div class="input-field col s12">
           <input id="email" type="email" class="validate" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" required>
-          <label for="password">Password</label>
+          <input id="password" type="password" class="validate" required minlength="6">
+          <label for="password">Password (min 6 characters)</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit">Login</button>
-      <p>Don't have an account? <a href="/register.html">Register</a></p>
+      <button class="btn waves-effect waves-light" type="submit">Register</button>
+      <p>Already have an account? <a href="/login.html">Login</a></p>
     </form>
   </main>
 
@@ -56,6 +56,6 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="/js/login.js"></script>
+  <script src="/js/register.js"></script>
 </body>
 </html>

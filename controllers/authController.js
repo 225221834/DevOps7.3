@@ -24,21 +24,21 @@ exports.register = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
+// Login controller
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
     }
-
+    // Find user and validate password
     const user = await User.findOne({ email });
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-
+    // Generate JWT
     const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+    // Return token
     res.json({ token, message: 'Login successful' });
   } catch (error) {
     console.error(error);
