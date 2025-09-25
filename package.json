@@ -24,8 +24,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.19.0",
-    "mongoose": "^8.18.2",
-    "sqlite3": "^5.1.7"
+    "mongoose": "^8.18.2"
   },
   "type": "commonjs"
 }
