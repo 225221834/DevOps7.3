@@ -12,12 +12,16 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "@wdio/mocha-framework": "^9.19.2",
+    "chromedriver": "^120.0.0",
     "mocha": "^10.2.0",
-    "webdriverio": "^8.37.0",
-    "@wdio/mocha-framework": "^8.37.0",
-    "chromedriver": "^120.0.0"
+    "webdriverio": "^9.19.2"
   },
-  "keywords": ["devops", "jenkins", "sonarqube"],
+  "keywords": [
+    "devops",
+    "jenkins",
+    "sonarqube"
+  ],
   "author": "MystiKraft",
   "license": "ISC"
 }
