@@ -1,28 +1,23 @@
+# Use Node.js base image for Appium/Mocha tests
 FROM node:current-alpine
 
-# Install dependencies needed for Appium
-RUN apk add --no-cache \
-    bash \
-    chromium \
-    chromium-chromedriver \
-    curl \
-    g++ \
-    make \
-    python3 \
-    ttf-freefont \
-    udev
+# Update Alpine packages to latest security patches
+RUN apk update && apk upgrade
 
-# Create shared node_modules directory outside of /app
+# Create folders for dependencies and app
 WORKDIR /opt/app
 COPY package*.json ./
 RUN npm ci
 
-# Copy app code into /app
+# Now switch to the app directory
 WORKDIR /app
 COPY . .
 
-# Link installed deps from /opt/app
-RUN ln -s /opt/app/node_modules node_modules
+# Symlink node_modules from build stage
+RUN ln -s /opt/app/node_modules /app/node_modules
 
-# Optional default command
-CMD ["npm", "test"]
+# Expose Appium default port (if needed)
+EXPOSE 4723
+
+# Default command
+CMD ["sh"]
