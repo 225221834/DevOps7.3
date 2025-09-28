@@ -1,5 +1,5 @@
 # Use Node.js base image for Appium/Mocha tests
-FROM node:current-alpine
+FROM node:18-alpine
 
 # Update Alpine packages to latest security patches
 RUN apk update && apk upgrade
