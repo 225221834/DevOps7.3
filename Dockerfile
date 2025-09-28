@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-# Install dependencies
+# Install dependencies needed for Appium
 RUN apk add --no-cache \
     bash \
     chromium \
@@ -12,20 +12,17 @@ RUN apk add --no-cache \
     ttf-freefont \
     udev
 
-# Set working directory
-WORKDIR /app
-
-# Copy and install dependencies
+# Create shared node_modules directory outside of /app
+WORKDIR /opt/app
 COPY package*.json ./
 RUN npm ci
 
-# Copy the rest of the code
+# Copy app code into /app
+WORKDIR /app
 COPY . .
 
-# Install Appium globally if needed
-RUN npm install -g appium
+# Link installed deps from /opt/app
+RUN ln -s /opt/app/node_modules node_modules
 
-# Expose ports if needed
-EXPOSE 4723
-
+# Optional default command
 CMD ["npm", "test"]
