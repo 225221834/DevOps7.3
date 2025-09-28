@@ -1,0 +1,2 @@
+docker build -t devops:task7-3 .
+docker run -it devops:task7-3
