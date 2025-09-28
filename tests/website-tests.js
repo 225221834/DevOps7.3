@@ -18,7 +18,7 @@ describe('DevOps7.3 Web Server Test', function () {
   it('should load the website and verify title', async function () {
     await driver.url('http://localhost:3000');
     const title = await driver.getTitle();
-    assert.strictEqual(title, 'Welcome to DevOps7.3 Web Server', 'Website title does not match expected value');
+    assert.strictEqual(title, 'Welcome to DevOps7.3 webApp', 'Website title does not match expected value');
   });
 
   it('should verify the main heading exists', async function () {
