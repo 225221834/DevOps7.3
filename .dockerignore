@@ -1,2 +1,6 @@
-docker build -t devops:task7-3 .
-docker run -it devops:task7-3
+node_modules
+.git
+.gitignore
+Dockerfile
+Jenkinsfile
+README.md
