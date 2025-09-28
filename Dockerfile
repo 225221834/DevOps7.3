@@ -1,33 +1,25 @@
-FROM node:18-alpine
+FROM node:current-alpine
 
-# Install system dependencies (if your tests need a browser)
-RUN apk update && apk add --no-cache \
+# Add dependencies
+RUN apk add --no-cache \
+    bash \
     chromium \
     chromium-chromedriver \
-    udev \
-    ttf-freefont \
-    bash \
     curl \
     git \
+    ttf-freefont \
+    udev \
     && rm -rf /var/cache/apk/*
 
-# Set environment variables for Chrome
-ENV CHROME_BIN=/usr/bin/chromium-browser
-ENV CHROMEDRIVER_BIN=/usr/bin/chromedriver
+# Set env vars for Chrome
+ENV CHROME_BIN=/usr/bin/chromium-browser \
+    CHROMEDRIVER_BIN=/usr/bin/chromedriver
 
-# App root
+# Set working dir and install
 WORKDIR /app
-
-# Copy dependency files and install
 COPY package*.json ./
-
-# Install npm dependencies
 RUN npm ci && npm install -g appium mocha
-
-# Copy source code
 COPY . .
 
-# Expose Appium port (optional)
+# Expose default Appium port
 EXPOSE 4723
-
-CMD ["sh"]

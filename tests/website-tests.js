@@ -25,7 +25,7 @@ describe('DevOps7.3 Web Server Test', function () {
     await driver.url('http://localhost:3000');
     const heading = await driver.$('h1');
     const text = await heading.getText();
-    assert.strictEqual(text, 'Welcome to DevOps7.3 Web Server', 'Heading text does not match');
+    assert.strictEqual(text, 'Welcome to DevOps7.3 webApp', 'Heading text does not match');
   });
 
   after(async function () {
